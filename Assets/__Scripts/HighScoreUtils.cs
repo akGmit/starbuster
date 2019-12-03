@@ -1,42 +1,43 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using UnityEngine;
 using UnityEngine.UI;
+/// <summary>
+/// Class to provide High Scores functionality for the game.
+/// Writing/reading high scores to storage. View high scores in-game.
+/// </summary>
 
-[Serializable]
+
 public class HighScoreUtils : MonoBehaviour
 {
 
     [SerializeField]
     private List<int> hs;
 
-    [SerializeField]
+    
     public SortedSet<string> bb;
 
-    [SerializeField]
+
     public int bbb;
 
     [SerializeField]
-    public Button scores;
+    public List<TMPro.TMP_Text> scores;
 
     public void Start()
     {
         hs = GetHighScore();
+        WriteScores();
+    }
 
-        foreach( int n in hs)
+    public void WriteScores()
+    {
+        int i = 0;
+        foreach (int n in hs)
         {
-           
-  
-            scores.transform.position = new Vector2(30.0f + 0.0f, 50.0f + 100.05f);
-            
-            Instantiate(scores);
-            Destroy(scores);
-
-            
+            scores[i].text = "Score: " + n;
+            i++;
         }
-        
-
     }
 
     public void SaveScore(int score)
@@ -46,21 +47,18 @@ public class HighScoreUtils : MonoBehaviour
         if (!File.Exists(docPath + "/" + file))
         {
             // Create a file to write to.
-            using (StreamWriter sw = File.CreateText(docPath + "/" + file))
+            using (var sw = File.CreateText(docPath + "/" + file))
             {
                 sw.WriteLine(score);
             }
         }
-        else {
-
-            using (StreamWriter sw = File.AppendText(docPath + "/" + file))
+        else
+        {
+            using (var sw = File.AppendText(docPath + "/" + file))
             {
                 sw.WriteLine(score);
             }
-
         }
-
-
     }
 
     public List<int> GetHighScore()
@@ -71,7 +69,7 @@ public class HighScoreUtils : MonoBehaviour
         string docPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         if (File.Exists(docPath + "/" + file))
         {
-            using (StreamReader sr = File.OpenText(docPath + "/" + file))
+            using (var sr = File.OpenText(docPath + "/" + file))
             {
                 string s;
                 while ((s = sr.ReadLine()) != null)
@@ -81,22 +79,19 @@ public class HighScoreUtils : MonoBehaviour
             }
         }
         bbb = highScores.Count;
-        //bb = highScores;
-        //highScores.Add("8000");
-        //highScores.Add("3333");
+
         var rev = highScores.Reverse();
         List<int> hss = new List<int>();
         int i = 0;
-        foreach(var h in rev)
+        foreach (int h in rev)
         {
             hss.Add(h);
             i++;
-            if (i >= 9)
+            if (i >= 10)
+            {
                 break;
+            }
         }
-
-        
         return hss;
-
     }
 }

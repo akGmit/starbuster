@@ -62,7 +62,6 @@ public class Enemy : MonoBehaviour
             Instantiate(explosion);
             Destroy(bullet.gameObject);
             PublishEnemyKilledEvent();
-            
             Destroy(gameObject);
         }
         else if (bullet && tagType == "EnemySniper")

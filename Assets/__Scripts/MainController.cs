@@ -9,24 +9,22 @@ public class MainController : MonoBehaviour
     [SerializeField]
     SceneControler sceneControler;
 
-    
-    HighScoreUtils highgScore;
+    [SerializeField]
+    HighScoreUtils highScore;
 
-    private int playerScore = 0;
+    [SerializeField]
+    Player player;
 
-    // == methods ==
+    private IList<SpawnPoint> spawnPoints;
 
-    // add a method to deal with the enemy event
-    // do that in the enable method
 
     private void OnEnable()
-    {
+    { 
         // subscribe to the enemy getting killed event
         Enemy.EnemyKilledEvent += HandleEnemyKilledEvent;
         Player.PlayerKilledEvent += HandlePlayerKilledEvent;
     }
 
-   
     private void OnDisable()
     {
         // unsubscribe
@@ -36,14 +34,22 @@ public class MainController : MonoBehaviour
 
     private void HandleEnemyKilledEvent(Enemy enemy)
     {
-        playerScore += enemy.ScoreValue;
+        player.Score += enemy.ScoreValue;
+
+        if(player.Score > 100)
+        {
+            Debug.Log(player.Score);
+            GameObject spawner = GameObject.Find("Spawners");
+            spawner.SetActive(false);
+            Debug.Log(spawner.activeSelf);
+        }
     }
 
     private void HandlePlayerKilledEvent(Player player)
     {
-        Debug.Log(playerScore);
-        highgScore.SaveScore(playerScore);
+        Debug.Log("This: " + this.player.Score + " Another: " + player.Score);
+        highScore.SaveScore(player.Score);
+        this.player.Score = 0;
         sceneControler.LoadMainMenu();
     }
-
 }

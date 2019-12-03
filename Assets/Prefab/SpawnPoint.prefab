@@ -46,7 +46,7 @@ MonoBehaviour:
   spawnDelay: 0.25
   spawnRate: 0.3
   enemyStartSpeed: 2
-  enemyPrefab: {fileID: 1926115671145570119, guid: 28adc09403ce6634d878ba1cecdaf0ca,
+  enemyPrefab: {fileID: 9212000965393298085, guid: af51d5bc35d26a24e807c4233b6c0509,
     type: 3}
   enemyLimit: 5
   waypoints: []

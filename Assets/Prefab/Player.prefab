@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6446076986412724347}
   - component: {fileID: 6446076986412724348}
   - component: {fileID: 5997062329132836066}
-  - component: {fileID: 7227089393791644207}
+  - component: {fileID: 3001003376150695569}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6492488fff9862744a66253d24c0cde2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 5
+  playerSpeed: 3.5
   explosion: {fileID: 5904478919995842805, guid: 5a59ea98b9bc83e46af24110c42f8604,
     type: 3}
 --- !u!114 &6446076986412724347
@@ -230,7 +230,7 @@ PolygonCollider2D:
       - {x: -0.5, y: -4.5357146}
       - {x: -0.21428573, y: -3.9642859}
       - {x: -0.071428575, y: -3.4642859}
---- !u!50 &7227089393791644207
+--- !u!50 &3001003376150695569
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -238,7 +238,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6446076986412724327}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

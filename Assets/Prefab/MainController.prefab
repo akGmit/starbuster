@@ -45,5 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneControler: {fileID: 2549973145712873498, guid: 39cd6d338f541464bb27a2b25c401bbc,
     type: 3}
-  highgScore: {fileID: 3611126761063195243, guid: 51b48ab12c55dce4b8e6d25d64bab8fd,
+  highScore: {fileID: 6250324266820298574, guid: db5c9b6d940866241a42baacf6a88a9e,
     type: 3}
+  player: {fileID: 6446076986412724344, guid: eba9dc874565d654ba68bb5069ab4cc6, type: 3}

@@ -75,9 +75,11 @@
     <Compile Include="Assets\__Scripts\Shooting.cs" />
     <Compile Include="Assets\__Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\__Scripts\UI\SceneControler.cs" />
+    <Compile Include="Assets\__Scripts\Utils\ShuffledStack.cs" />
     <Compile Include="Assets\__Scripts\Waypoint.cs" />
     <Compile Include="Assets\__Scripts\WaypointFollower.cs" />
     <Compile Include="Assets\Polarith\AI\Examples\Scripts\TimerDestroy.cs" />
+    <None Include="Assets\__Sprites\NewUnlitShader.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

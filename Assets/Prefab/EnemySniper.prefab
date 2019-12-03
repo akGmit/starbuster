@@ -17,10 +17,20 @@ PrefabInstance:
       propertyPath: m_TagString
       value: EnemySniper
       objectReference: {fileID: 0}
+    - target: {fileID: 179467052574355646, guid: 5af09c81669f7c240919610483a85b50,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2834995596302380535, guid: 5af09c81669f7c240919610483a85b50,
         type: 3}
       propertyPath: scoreValue
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834995596302380535, guid: 5af09c81669f7c240919610483a85b50,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2708787444219628311, guid: 5af09c81669f7c240919610483a85b50,
         type: 3}
@@ -102,21 +112,6 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4987578084832348815, guid: 5af09c81669f7c240919610483a85b50,
-        type: 3}
-      propertyPath: m_BodyType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4987578084832348815, guid: 5af09c81669f7c240919610483a85b50,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7434530141044973406, guid: 5af09c81669f7c240919610483a85b50,
-        type: 3}
-      propertyPath: m_UsedByComposite
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: -2226745805053886402, guid: 5af09c81669f7c240919610483a85b50,
         type: 3}
       propertyPath: bulletSpeed
@@ -133,5 +128,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2526669603352532474, guid: 71703d718a12f9248ad04046b4a76f19,
         type: 3}
+    - target: {fileID: 4987578084832348815, guid: 5af09c81669f7c240919610483a85b50,
+        type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987578084832348815, guid: 5af09c81669f7c240919610483a85b50,
+        type: 3}
+      propertyPath: m_UseFullKinematicContacts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987578084832348815, guid: 5af09c81669f7c240919610483a85b50,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434530141044973406, guid: 5af09c81669f7c240919610483a85b50,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5af09c81669f7c240919610483a85b50, type: 3}

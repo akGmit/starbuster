@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utilities;
 
 public class SpawnPoint : MonoBehaviour
 {
@@ -21,18 +22,18 @@ public class SpawnPoint : MonoBehaviour
     private Enemy enemyPrefab;
 
     [SerializeField]
-    private int enemyLimit = 5;
-
-    private int enemyCount = 0;
-
-    [SerializeField]
     [Header("WayPoint Array")]
     private Transform[] waypoints;
+
+    private Stack<SpawnPoint> spawnStack;
+
+    private IList<SpawnPoint> spawnPoints;
 
     private GameObject enemyParent;
     // Start is called before the first frame update
     void Start()
     {
+        spawnPoints = GameObject.Find("Spawners").GetComponentsInChildren<SpawnPoint>();
         // get the EnemyParent object
         enemyParent = GameObject.Find("EnemyParent");
         if (!enemyParent)
@@ -44,16 +45,26 @@ public class SpawnPoint : MonoBehaviour
 
     private void SpawnRepeating()
     {
+        spawnStack = ShuffledStack.CreateShuffledStack(spawnPoints);
+
         InvokeRepeating("Spawn", spawnDelay, spawnRate);
     }
 
     private void Spawn()
     {
-        
-            // create an enemyPrefab
-            var enemy = Instantiate(enemyPrefab, enemyParent.transform);
+
+        if (spawnStack.Count == 0)
+        {
+            spawnStack = ShuffledStack.CreateShuffledStack(spawnPoints);
+            Debug.Log(spawnStack);
+        }
+
+        var currentPoint = spawnStack.Pop();
+        Debug.Log(currentPoint);
+        // create an enemyPrefab
+        var enemy = Instantiate(enemyPrefab, enemyParent.transform);
             // set its position to the DockSpawner
-            enemy.transform.position = transform.position;
+            enemy.transform.position = currentPoint.transform.position;
             // give it a path to follow
             var follower = enemy.GetComponent<WaypointFollower>();
             // add the array of Dock points to an arrray in the enemy

@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private ParticleSystem explosion;
     
+    public int Score { get; set; }
     // Start is called before the first frame update
     void Start()    // initialisation
     {
@@ -42,11 +43,14 @@ public class Player : MonoBehaviour
         var bullet = collision.GetComponent<EnemyBullet>();
         var enemy = collision.GetComponent<Enemy>();
 
-        explosion.transform.position = transform.position;
-        Instantiate(explosion);
-        Destroy(bullet.gameObject);
-        PublishPlayerKilledEvent();
-        Destroy(gameObject);
+        if (bullet)
+        {
+            explosion.transform.position = transform.position;
+            Instantiate(explosion);
+            Destroy(bullet.gameObject);
+            PublishPlayerKilledEvent();
+            Destroy(gameObject);
+        }
     }
 
 
