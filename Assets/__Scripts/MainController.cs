@@ -1,25 +1,24 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MainController : MonoBehaviour
 {
     // == fields ==
     [SerializeField]
-    SceneControler sceneControler;
+    private SceneControler sceneControler;
 
     [SerializeField]
-    HighScoreUtils highScore;
+    private HighScoreUtils highScore;
 
     [SerializeField]
-    Player player;
+    private Player player;
 
     private IList<SpawnPoint> spawnPoints;
 
 
     private void OnEnable()
-    { 
+    {
         // subscribe to the enemy getting killed event
         Enemy.EnemyKilledEvent += HandleEnemyKilledEvent;
         Player.PlayerKilledEvent += HandlePlayerKilledEvent;
@@ -36,13 +35,24 @@ public class MainController : MonoBehaviour
     {
         player.Score += enemy.ScoreValue;
 
-        if(player.Score > 100)
+        if (player.Score > 100)
         {
-            Debug.Log(player.Score);
-            GameObject spawner = GameObject.Find("Spawners");
-            spawner.SetActive(false);
-            Debug.Log(spawner.activeSelf);
+            StopBasicEnemySpawning();
         }
+    }
+
+    private void StopBasicEnemySpawning()
+    {
+        spawnPoints = GameObject.Find("Spawners").GetComponentsInChildren<SpawnPoint>();
+
+        spawnPoints.ToList().ForEach(s =>
+        {
+            s.CancelInvoke();
+            s.gameObject.SetActive(false);
+        });
+
+        bool allInactive = spawnPoints.All(s => s.gameObject.activeSelf == false);
+        Debug.Log(allInactive);
     }
 
     private void HandlePlayerKilledEvent(Player player)

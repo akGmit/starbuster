@@ -53,8 +53,6 @@ public class Player : MonoBehaviour
         }
     }
 
-
-
     //An delegate type for player death event
     //Main controller willl deal with this
     public delegate void PlayerKilled(Player player);
