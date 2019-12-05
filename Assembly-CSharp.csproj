@@ -69,13 +69,15 @@
     <Compile Include="Assets\__Scripts\EnemyBullet.cs" />
     <Compile Include="Assets\__Scripts\EnemyCounter.cs" />
     <Compile Include="Assets\__Scripts\EnemyShooting.cs" />
-    <Compile Include="Assets\__Scripts\HighScoreUtils.cs" />
     <Compile Include="Assets\__Scripts\MainController.cs" />
     <Compile Include="Assets\__Scripts\Player.cs" />
     <Compile Include="Assets\__Scripts\PlayerBullet.cs" />
     <Compile Include="Assets\__Scripts\Shooting.cs" />
     <Compile Include="Assets\__Scripts\SpawnPoint.cs" />
-    <Compile Include="Assets\__Scripts\UI\SceneControler.cs" />
+    <Compile Include="Assets\__Scripts\UI\SceneController.cs" />
+    <Compile Include="Assets\__Scripts\Utils\HighScoreUtils.cs" />
+    <Compile Include="Assets\__Scripts\Utils\Level.cs" />
+    <Compile Include="Assets\__Scripts\Utils\LevelSettings.cs" />
     <Compile Include="Assets\__Scripts\Utils\ShuffledStack.cs" />
     <Compile Include="Assets\__Scripts\Waypoint.cs" />
     <Compile Include="Assets\__Scripts\WaypointFollower.cs" />

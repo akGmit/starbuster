@@ -7,11 +7,11 @@ public class Enemy : MonoBehaviour
     // == fields ==
     // use this later for scores and collisions
     [SerializeField]
-    private int scoreValue = 10;
+    internal int scoreValue = 10;
     
-
     [SerializeField]
-    private ParticleSystem explosion;
+    internal ParticleSystem explosion;
+
 
     // add sounds
     [SerializeField] private AudioClip spawnClip;
@@ -20,15 +20,8 @@ public class Enemy : MonoBehaviour
 
     //private SoundController soundController;
 
-    public int ScoreValue { get { return scoreValue; } }
-
-    // figure how to give the player the score
-    // use the game controller to manage this.
-    // enemy is going to publish an event to the system
-    // game manager is going to list for these events
-    // then add the score to the player
-    // create a delegate type for the event
-    // reference pointer to a method and is treated as a variable
+    public int ScoreValue => scoreValue;
+    
     public delegate void EnemyKilled(Enemy enemy);
 
     // game controller subscribes to this
@@ -73,10 +66,9 @@ public class Enemy : MonoBehaviour
             
             Destroy(gameObject);
         }
-
     }
 
-    private void PublishEnemyKilledEvent()
+    internal void PublishEnemyKilledEvent()
     {
         if (EnemyKilledEvent != null)
         {

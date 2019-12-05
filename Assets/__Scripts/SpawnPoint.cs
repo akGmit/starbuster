@@ -24,6 +24,9 @@ public class SpawnPoint : MonoBehaviour
     private Enemy enemyPrefab;
 
     [SerializeField]
+    private Enemy bossPrefab;
+
+    [SerializeField]
     [Header("WayPoint Array")]
     private Transform[] waypoints;
     #endregion
@@ -32,6 +35,8 @@ public class SpawnPoint : MonoBehaviour
     private Stack<SpawnPoint> spawnStack;
     private IList<SpawnPoint> spawnPoints;
     private GameObject enemyParent;
+    private Enemy boss;
+    private WaypointFollower follower;
     #endregion
 
     void Start()
@@ -59,17 +64,45 @@ public class SpawnPoint : MonoBehaviour
         if (spawnStack.Count == 0)
         {
             spawnStack = ShuffledStack.CreateShuffledStack(spawnPoints);
-            Debug.Log(spawnStack);
+          
         }
 
         var currentPoint = spawnStack.Pop();
-        Debug.Log(currentPoint);
         // create an enemyPrefab
         var enemy = Instantiate(enemyPrefab, enemyParent.transform);
         // set its position to the DockSpawner
         enemy.transform.position = currentPoint.transform.position;
         // give it a path to follow
         var follower = enemy.GetComponent<WaypointFollower>();
+        // add the array of Dock points to an arrray in the enemy
+        foreach (var point in waypoints)
+        {
+            follower.AddPointToFollow(point.position);
+        }
+        // set a speed for the enemy
+        follower.Speed = enemyStartSpeed;
+    }
+
+    public void BossSpawn()
+    {
+        boss = Instantiate(bossPrefab, enemyParent.transform);
+
+        InvokeRepeating("BossMove", 2, 1);
+        //BossMove();
+    }
+
+    private void BossMove()
+    {
+        if (spawnStack.Count == 0)
+        {
+            spawnStack = ShuffledStack.CreateShuffledStack(spawnPoints);
+        }
+
+        var currentPoint = spawnStack.Pop();
+        var boss = Instantiate(bossPrefab, enemyParent.transform);
+        boss.transform.position = currentPoint.transform.position;
+        // give it a path to follow
+        follower = boss.GetComponent<WaypointFollower>();
         // add the array of Dock points to an arrray in the enemy
         foreach (var point in waypoints)
         {

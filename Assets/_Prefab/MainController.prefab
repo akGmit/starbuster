@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b97bd9587fc32e8419c99ee1cc60de2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneControler: {fileID: 2549973145712873498, guid: 39cd6d338f541464bb27a2b25c401bbc,
+  sceneController: {fileID: 2549973145712873498, guid: 39cd6d338f541464bb27a2b25c401bbc,
     type: 3}
   highScore: {fileID: 6250324266820298574, guid: db5c9b6d940866241a42baacf6a88a9e,
     type: 3}

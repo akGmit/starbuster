@@ -8,6 +8,7 @@ TagManager:
   - EnemyWithAim
   - EnemySniper
   - scores
+  - Boss
   layers:
   - Default
   - TransparentFX

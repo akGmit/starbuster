@@ -67,15 +67,16 @@ public class WaypointFollower : MonoBehaviour
         {
             // update rb.position to the target
             rb.position = new Vector2(currentTarget.x, currentTarget.y);
-            waypoints.Remove(currentTarget);
-            
            
+                waypoints.Remove(currentTarget);
+         
             if (HasMorePoints())
             {
                 GetNextTarget();
             }
             else
             { 
+                //if(!gameObject.CompareTag("Boss"))
                     Destroy(gameObject);
             }          
         }
