@@ -6,25 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class MainController : MonoBehaviour
 {
-    // == fields ==
-    [SerializeField]
-    private SceneController sceneController;
+    #region Serialized fields
 
     [SerializeField]
     private HighScoreUtils highScore;
 
     [SerializeField]
     private Player player;
+    #endregion
 
     private IList<SpawnPoint> spawnPoints;
-
     private bool levelStarted = false;
-    private float levelTimeLimit = 10;
+    public String level;
 
     private void Start()
     {
-        
-        
     }
 
     private void Update()
@@ -34,14 +30,15 @@ public class MainController : MonoBehaviour
 
     private void Timer()
     {
-
-        if (Time.timeSinceLevelLoad > levelTimeLimit + 5)
+        if (Time.timeSinceLevelLoad > Levels.Level[level].LevelTime)
         {
-            SpawnBoss();
-            levelStarted = false;
-           
+            StopBasicEnemySpawning();
+            if (GameObject.Find("EnemyParent").GetComponentsInChildren<Enemy>().Length == 0)
+            {
+                levelStarted = false;
+                SpawnBoss();
+            }
         }
-      
     }
 
     private void StopBasicEnemySpawning()
@@ -50,19 +47,11 @@ public class MainController : MonoBehaviour
         spawnPoints.ToList().ForEach(s =>
         {
             s.CancelInvoke();
-            //s.gameObject.SetActive(false);
         });
-
-        bool allInactive = spawnPoints.All(s => s.gameObject.activeSelf == false);
-        Debug.Log(allInactive);
     }
 
-    private void SpawnBoss()
-    {
-        spawnPoints = GameObject.Find("Spawners").GetComponentsInChildren<SpawnPoint>();
-        
-        spawnPoints[0].BossSpawn();
-    }
+    private void SpawnBoss() => GameObject.Find("EnemyParent").GetComponent<EnemyParent>().SpawnBoss();
+    
 
     private void OnEnable()
     {
@@ -79,10 +68,11 @@ public class MainController : MonoBehaviour
     }
 
     #region Scene management methods
-    public void LoadLevel(int level)
-    {
-        SceneManager.LoadScene(Level.Get(level));
-    }
+
+    public void LoadLevel(int level) => SceneManager.LoadScene(Levels.Get(level));
+
+    public void LoadScene(string name) => SceneManager.LoadScene(name);
+
     #endregion
 
     #region Event handlers
@@ -91,22 +81,23 @@ public class MainController : MonoBehaviour
         if (scene.name != "MainGameMenu")
         {
             levelStarted = true;
-            levelTimeLimit = Level.Levels[scene.name].LevelTime;
+            level = scene.name;
         }
     }
 
     private void HandleEnemyKilledEvent(Enemy enemy)
     {
         player.Score += enemy.ScoreValue;
-        
+        if(enemy.CompareTag("Boss"))
+        {
+            highScore.SaveScore(player.Score);
+            SceneManager.LoadScene("MainGameMenu");
+        }
     }
-
-    
 
     private void HandlePlayerKilledEvent(Player player)
     {
-        Debug.Log("This: " + this.player.Score + " Another: " + player.Score);
-        highScore.SaveScore(player.Score);
+        highScore.SaveScore(this.player.Score);
         this.player.Score = 0;
         SceneManager.LoadScene("MainGameMenu");
     }

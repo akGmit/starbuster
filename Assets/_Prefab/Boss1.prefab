@@ -10,12 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 677064376719818860}
   - component: {fileID: 677064376719818863}
-  - component: {fileID: 677064376719818857}
   - component: {fileID: 677064376719818856}
   - component: {fileID: 677064376719818859}
+  - component: {fileID: 2831119492289269890}
   - component: {fileID: 677064376719818858}
   - component: {fileID: 677064376719818773}
-  - component: {fileID: 2831119492289269890}
   m_Layer: 0
   m_Name: Boss1
   m_TagString: Boss
@@ -31,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677064376719818772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1, y: 5.58, z: 0}
-  m_LocalScale: {x: 1.3051692, y: 1.2616637, z: 0.87011284}
+  m_LocalPosition: {x: -0.612, y: 5.859, z: 0}
+  m_LocalScale: {x: 1.39026, y: 1.299, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -86,19 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &677064376719818857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677064376719818772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ab89909e7810d945a58b5c860ad5e2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToLive: 3
 --- !u!114 &677064376719818856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,10 +97,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e230f69bbd50e43a100d8431ee5c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: -7247014417584188730, guid: 1a9f9380fa94a09448a2416e8846ecc2,
+  bulletPrefab: {fileID: 7141609268692196047, guid: ea7b55fad6593034faf6632570b55f43,
     type: 3}
-  bulletSpeed: 5
-  firingRate: 0.2
+  bulletSpeed: 4.27
+  firingRate: 2.9
 --- !u!114 &677064376719818859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,6 +113,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6ab470d0796e349b8d17ecf799a5d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2831119492289269890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677064376719818772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d178560e4c592b439f3c841e543be66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreValue: 1200
+  explosion: {fileID: 5904478919995842805, guid: 5a59ea98b9bc83e46af24110c42f8604,
+    type: 3}
+  level: Level1
 --- !u!50 &677064376719818858
 Rigidbody2D:
   serializedVersion: 4
@@ -235,22 +237,3 @@ PolygonCollider2D:
       - {x: -1.09, y: -0.325}
       - {x: -1.17, y: -0.215}
       - {x: -1.19, y: -0.195}
---- !u!114 &2831119492289269890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677064376719818772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d178560e4c592b439f3c841e543be66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreValue: 200
-  explosion: {fileID: 5904478919995842805, guid: 5a59ea98b9bc83e46af24110c42f8604,
-    type: 3}
-  spawnClip: {fileID: 0}
-  hitClip: {fileID: 0}
-  crashClip: {fileID: 0}
-  level: Level1

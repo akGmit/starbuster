@@ -6,41 +6,61 @@ public class Boss : Enemy
 {
     [SerializeField]
     private string level;
-
-    private int strength = 10;
+    private int strength;
+    private Rigidbody2D rb;
+    private float latestDirectionChangeTime = 0f;
+    private readonly float directionChangeTime = 2f;
+    private float characterVelocity = 1.5f;
+    private Vector2 movementDirection;
+    private Vector2 movementPerSecond;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        strength = Levels.Level[level].EnemyStrength * 10;
+        SetMovementVector();
     }
 
-    // Update is called once per frame
+    private void SetMovementVector()
+    {
+        movementDirection = new Vector2(UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f)).normalized;
+        movementPerSecond = movementDirection * Levels.Level[level].EnemySpeed * 7;
+        rb.velocity = movementPerSecond;
+    }
+
     void Update()
     {
-        
+        if (Time.time - latestDirectionChangeTime > directionChangeTime)
+        {
+            latestDirectionChangeTime = Time.time;
+            SetMovementVector();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D WhatHitMe)
     {
-        
-        var bullet = WhatHitMe.GetComponent<PlayerBullet>();
-        var player = WhatHitMe.GetComponent<Player>();
-        // get the tag off the current gameobject
-        string tagType = gameObject.tag;
-        if (bullet && strength > 0)
+        if (WhatHitMe.CompareTag("Edges"))
         {
-            Debug.Log("DDDDDD");
-            Destroy(bullet.gameObject);
-            strength--;
+            rb.velocity *= -1;
+            latestDirectionChangeTime = Time.time;
         }
-        else if(strength <= 0)
+        if (WhatHitMe.CompareTag("Player"))
         {
-            explosion.transform.position = transform.position;
-            Instantiate(explosion);
-            Destroy(bullet.gameObject);
-            PublishEnemyKilledEvent();
-
-            Destroy(gameObject);
+            var bullet = WhatHitMe.GetComponent<PlayerBullet>();
+     
+            if (bullet && strength > 0)
+            {
+                Destroy(bullet.gameObject);
+                strength--;
+            }
+            else if (bullet && strength <= 0)
+            {
+                explosion.transform.position = transform.position;
+                Instantiate(explosion);
+                Destroy(bullet.gameObject);
+                PublishEnemyKilledEvent();
+                Destroy(gameObject);
+            }
         }
     }
 }

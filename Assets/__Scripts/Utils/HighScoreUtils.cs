@@ -11,15 +11,8 @@ using UnityEngine.UI;
 
 public class HighScoreUtils : MonoBehaviour
 {
-
     [SerializeField]
     private List<int> hs;
-
-    
-    public SortedSet<string> bb;
-
-
-    public int bbb;
 
     [SerializeField]
     public List<TMPro.TMP_Text> scores;
@@ -44,9 +37,9 @@ public class HighScoreUtils : MonoBehaviour
     {
         string file = "hs.dat";
         string docPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+        Debug.Log(docPath);
         if (!File.Exists(docPath + "/" + file))
         {
-            // Create a file to write to.
             using (var sw = File.CreateText(docPath + "/" + file))
             {
                 sw.WriteLine(score);
@@ -63,7 +56,7 @@ public class HighScoreUtils : MonoBehaviour
 
     public List<int> GetHighScore()
     {
-
+        List<int> hss = new List<int>();
         string file = "hs.dat";
         SortedSet<int> highScores = new SortedSet<int>();
         string docPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
@@ -77,21 +70,18 @@ public class HighScoreUtils : MonoBehaviour
                     highScores.Add(int.Parse(s));
                 }
             }
-        }
-        bbb = highScores.Count;
-
-        var rev = highScores.Reverse();
-        List<int> hss = new List<int>();
-        int i = 0;
-        foreach (int h in rev)
-        {
-            hss.Add(h);
-            i++;
-            if (i >= 10)
+            var rev = highScores.Reverse();
+            int i = 0;
+            foreach (int h in rev)
             {
-                break;
+                hss.Add(h);
+                i++;
+                if (i >= 10)
+                {
+                    break;
+                }
             }
-        }
+        }       
         return hss;
     }
 }

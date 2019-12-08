@@ -25,11 +25,9 @@ public class WaypointFollower : MonoBehaviour
         waypoints.Add(point);
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        // set the current target to the next point on the list
         GetNextTarget();
     }
 
@@ -37,8 +35,7 @@ public class WaypointFollower : MonoBehaviour
     {
         if (HasMorePoints())
         {
-            currentTarget = waypoints.First();// using system.Linq;
-            
+            currentTarget = waypoints.First();
         }
     }
 
@@ -57,28 +54,22 @@ public class WaypointFollower : MonoBehaviour
 
     private void MoveToNextPoint()
     {
-        // set the rb moving towards the target point.
-        rb.position = Vector2.MoveTowards(rb.position,
-                                          currentTarget,
-                                          speed);
-        // have to figure when the rb arrives at target
-       
-        if (Vector2.Distance(rb.position, currentTarget) < 0.1)
+        rb.position = Vector2.MoveTowards(rb.position, currentTarget, speed);
+ 
+        if (Vector2.Distance(rb.position, currentTarget) < 0.01)
         {
-            // update rb.position to the target
             rb.position = new Vector2(currentTarget.x, currentTarget.y);
            
-                waypoints.Remove(currentTarget);
-         
+            waypoints.Remove(currentTarget);
+
             if (HasMorePoints())
             {
                 GetNextTarget();
             }
             else
-            { 
-                //if(!gameObject.CompareTag("Boss"))
-                    Destroy(gameObject);
-            }          
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

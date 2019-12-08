@@ -19,15 +19,12 @@ public class BackgroundScroller : MonoBehaviour
 
     void Start()
     {
-        // get the material and set the offset value
         myMaterial = GetComponent<Renderer>().material;
         offset = new Vector2(0, scrollSpeed); 
     }
 
     void Update()
     {
-        // set the x offset
-        myMaterial.mainTextureOffset += 
-                            offset * Time.deltaTime;
+        myMaterial.mainTextureOffset += offset * Time.deltaTime;
     }
 }

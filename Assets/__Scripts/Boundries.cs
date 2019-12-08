@@ -6,11 +6,8 @@ public class Boundries : MonoBehaviour
 {
     public Camera mainCamera;
     private Vector2 screenBounds;
-
     private float objectWidth, objectHeight;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         // find the screen bounds and convert to unity 
@@ -25,11 +22,9 @@ public class Boundries : MonoBehaviour
     private void LateUpdate()
     {
         Vector3 viewPos = transform.position;
-
         viewPos.x = Mathf.Clamp(viewPos.x,
                                 (screenBounds.x * -1) + objectWidth,
                                 screenBounds.x - objectWidth);
-
         transform.position = viewPos;
     }
 }

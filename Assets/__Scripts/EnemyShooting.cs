@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,36 +14,40 @@ public class EnemyShooting : MonoBehaviour
     [SerializeField]
     private float firingRate = 0.2f;
     // Start is called before the first frame update
+
+    private GameObject player;
+
     void Start()
-    {
+    {      
+        player = GameObject.Find("Player");
         var tag = gameObject.tag;
 
         if(tag == "EnemyEasy")
         {
             InvokeRepeating("ShootStraightDown", 0f, firingRate);
-        }else if(tag == "EnemySniper")
+        }
+        else if(tag == "EnemySniper")
         {
-            
             InvokeRepeating("ShootAtPlayer", 0f, firingRate);
         }
-
+        else if (tag == "Boss")
+        {
+            InvokeRepeating("BossShooting", 0f, firingRate);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void BossShooting()
     {
-        
+        EnemyBullet bullet = Instantiate(bulletPrefab);
+        bullet.transform.position = transform.position;
+        bullet.GetComponent<Rigidbody2D>().velocity = TargetDirection() * bulletSpeed;
     }
 
     private void ShootAtPlayer()
     {
-        var playerPosition = GameObject.Find("Player").transform.position;
         EnemyBullet bullet = Instantiate(bulletPrefab);
         bullet.transform.position = transform.position;
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-     
-        rb.velocity = Vector2.MoveTowards(rb.position, playerPosition, bulletSpeed);
-        
+        bullet.GetComponent<Rigidbody2D>().velocity = TargetDirection() * bulletSpeed;
     }
 
     private void ShootStraightDown()
@@ -51,7 +56,10 @@ public class EnemyShooting : MonoBehaviour
         bullet.transform.position = transform.position;
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.velocity = Vector2.down * bulletSpeed;
-        // play shoot sound
-        //PlayClip(shootClip);
+    }
+
+    private Vector3 TargetDirection()
+    {
+        return (player.transform.position - transform.position).normalized;
     }
 }
