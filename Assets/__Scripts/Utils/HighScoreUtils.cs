@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 /// <summary>
@@ -11,29 +12,25 @@ using UnityEngine.UI;
 
 public class HighScoreUtils : MonoBehaviour
 {
-    [SerializeField]
-    private List<int> hs;
+
 
     [SerializeField]
     public List<TMPro.TMP_Text> scores;
 
-    public void Start()
-    {
-        hs = GetHighScore();
-        WriteScores();
-    }
+    private List<Score> hs;
 
     public void WriteScores()
     {
+        hs = GetHighScore();
         int i = 0;
-        foreach (int n in hs)
+        foreach (var n in hs)
         {
-            scores[i].text = "Score: " + n;
+            scores[i].text = n.Name + ": " + n.ScoreValue; 
             i++;
         }
     }
 
-    public void SaveScore(int score)
+    public void SaveScore(int score, string name)
     {
         string file = "hs.dat";
         string docPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
@@ -42,23 +39,23 @@ public class HighScoreUtils : MonoBehaviour
         {
             using (var sw = File.CreateText(docPath + "/" + file))
             {
-                sw.WriteLine(score);
+                sw.WriteLine(score + " " + name);
             }
         }
         else
         {
             using (var sw = File.AppendText(docPath + "/" + file))
             {
-                sw.WriteLine(score);
+                sw.WriteLine(score + " " + name);
             }
         }
     }
 
-    public List<int> GetHighScore()
+    public List<Score> GetHighScore()
     {
-        List<int> hss = new List<int>();
+        List<Score> hss = new List<Score>();
         string file = "hs.dat";
-        SortedSet<int> highScores = new SortedSet<int>();
+        List<Score> highScores = new List<Score>();
         string docPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         if (File.Exists(docPath + "/" + file))
         {
@@ -67,12 +64,14 @@ public class HighScoreUtils : MonoBehaviour
                 string s;
                 while ((s = sr.ReadLine()) != null)
                 {
-                    highScores.Add(int.Parse(s));
+                    string[] scores = s.Split(' ');
+                    highScores.Add(new Score(int.Parse(scores[0]), scores[1]));
                 }
             }
-            var rev = highScores.Reverse();
+            highScores.Sort();
+            highScores.Reverse();
             int i = 0;
-            foreach (int h in rev)
+            foreach (var h in highScores)
             {
                 hss.Add(h);
                 i++;
@@ -83,5 +82,22 @@ public class HighScoreUtils : MonoBehaviour
             }
         }       
         return hss;
+    }
+
+    public bool CheckIfInTopTen(int score)
+    {
+        var top10 = GetHighScore();
+        if (top10.Count == 0)
+        {
+            return true;
+        }else if(score >= top10.Last().ScoreValue)
+        {
+            return true;
+        }else if(top10.Count < 10)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

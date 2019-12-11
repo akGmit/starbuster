@@ -10,6 +10,12 @@ TagManager:
   - scores
   - Boss
   - Edges
+  - PowerUpBeam
+  - PowerUpShield
+  - EnemyBullet
+  - PlayerBullet
+  - CollectableShield
+  - CollectableBeam
   layers:
   - Default
   - TransparentFX

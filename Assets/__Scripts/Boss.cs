@@ -5,7 +5,9 @@ using UnityEngine;
 public class Boss : Enemy
 {
     [SerializeField]
-    private string level;
+    private ParticleSystem bossAppearFX;
+
+    private LevelSettings settings;
     private int strength;
     private Rigidbody2D rb;
     private float latestDirectionChangeTime = 0f;
@@ -16,15 +18,17 @@ public class Boss : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        settings = GameObject.Find("LevelSettings").GetComponent<LevelSettings>();
         rb = gameObject.GetComponent<Rigidbody2D>();
-        strength = Levels.Level[level].EnemyStrength * 10;
-        SetMovementVector();
+        var collider = gameObject.GetComponent<PolygonCollider2D>();
+        strength = settings.EnemyStrength * 10;
+        SetMovementVector();     
     }
 
     private void SetMovementVector()
     {
         movementDirection = new Vector2(UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f)).normalized;
-        movementPerSecond = movementDirection * Levels.Level[level].EnemySpeed * 7;
+        movementPerSecond = movementDirection * settings.EnemySpeed * 7;
         rb.velocity = movementPerSecond;
     }
 
@@ -44,7 +48,7 @@ public class Boss : Enemy
             rb.velocity *= -1;
             latestDirectionChangeTime = Time.time;
         }
-        if (WhatHitMe.CompareTag("Player"))
+        if (WhatHitMe.CompareTag("PlayerBullet"))
         {
             var bullet = WhatHitMe.GetComponent<PlayerBullet>();
      

@@ -14,7 +14,6 @@ public class Enemy : MonoBehaviour
 
     public int ScoreValue => scoreValue;
 
-
     public delegate void EnemyKilled(Enemy enemy);
     public static EnemyKilled EnemyKilledEvent;
 
@@ -49,7 +48,6 @@ public class Enemy : MonoBehaviour
 
     internal void PublishEnemyKilledEvent()
     {
-        // there is a listener, so publish
         EnemyKilledEvent?.Invoke(this);
     }
 

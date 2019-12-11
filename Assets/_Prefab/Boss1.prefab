@@ -129,6 +129,8 @@ MonoBehaviour:
   explosion: {fileID: 5904478919995842805, guid: 5a59ea98b9bc83e46af24110c42f8604,
     type: 3}
   level: Level1
+  bossAppearFX: {fileID: -3256528498169925308, guid: 1ad16ff0df6886c4cbf3af31a6d98f8c,
+    type: 3}
 --- !u!50 &677064376719818858
 Rigidbody2D:
   serializedVersion: 4

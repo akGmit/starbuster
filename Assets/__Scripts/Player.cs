@@ -11,10 +11,21 @@ public class Player : MonoBehaviour
     [SerializeField]
     private ParticleSystem explosion;
     
-    public int Score { get; set; }
+    [SerializeField]
+    private Shield shieldPrefab;
+
+    //[SerializeField]
+    //private Beam beamPrefab;
+
+    private Shield shield;
+    public int Score{ get; set; }
+    public string Name { get; set; } = "default";
+
+    private bool shieldActive = false;
 
     void Start()  
     {
+        
     }
 
     private void Update()
@@ -24,6 +35,10 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
+        if(shield)
+        {
+            shield.transform.position = transform.position;
+        }
         var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * playerSpeed;
         var newXPos = transform.position.x + deltaX;
         transform.position = new Vector2(newXPos, transform.position.y);
@@ -31,22 +46,25 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var bullet = collision.GetComponent<EnemyBullet>();
-        var enemy = collision.GetComponent<Enemy>();
-
-        if (bullet || enemy)
+        var tag = collision.tag;
+        if (collision && tag == "EnemyBullet")
         {
+            var collisionObj  = collision.GetComponent<EnemyBullet>();
             explosion.transform.position = transform.position;
             Instantiate(explosion);
-            Destroy(bullet.gameObject);
+            Destroy(collisionObj.gameObject);
             PublishPlayerKilledEvent();
             Destroy(gameObject);
         }
     }
 
+    public void ActivateShield()
+    {
+        shield = Instantiate(shieldPrefab);
+    }
 
-    public delegate void PlayerKilled(Player player);     
+    public delegate void PlayerKilled();     
     public static PlayerKilled PlayerKilledEvent;
 
-    private void PublishPlayerKilledEvent() => PlayerKilledEvent?.Invoke(this);
+    private void PublishPlayerKilledEvent() => PlayerKilledEvent?.Invoke();
 }

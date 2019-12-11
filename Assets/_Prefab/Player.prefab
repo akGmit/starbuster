@@ -100,6 +100,8 @@ MonoBehaviour:
   playerSpeed: 3.5
   explosion: {fileID: 5904478919995842805, guid: 5a59ea98b9bc83e46af24110c42f8604,
     type: 3}
+  shieldPrefab: {fileID: 3651703453595537503, guid: 8a4e476506534d441a0af55a11a4e67a,
+    type: 3}
 --- !u!114 &6446076986412724347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +131,8 @@ MonoBehaviour:
     type: 3}
   bulletSpeed: 6.62
   firingRate: 0.7
+  beamPrefab: {fileID: 3783363806922482578, guid: b6fd6c9ea92dab04fbbf8b7376cc1a9d,
+    type: 3}
 --- !u!60 &5997062329132836066
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -238,7 +242,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6446076986412724327}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

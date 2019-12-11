@@ -63,22 +63,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\__Scripts\Background\BackgroundScroller.cs" />
+    <Compile Include="Assets\__Scripts\Beam.cs" />
     <Compile Include="Assets\__Scripts\Boss.cs" />
+    <Compile Include="Assets\__Scripts\BossAppearing.cs" />
     <Compile Include="Assets\__Scripts\Boundries.cs" />
     <Compile Include="Assets\__Scripts\Edges.cs" />
     <Compile Include="Assets\__Scripts\Enemy.cs" />
     <Compile Include="Assets\__Scripts\EnemyBullet.cs" />
     <Compile Include="Assets\__Scripts\EnemyParent.cs" />
     <Compile Include="Assets\__Scripts\EnemyShooting.cs" />
+    <Compile Include="Assets\__Scripts\FallingBehaviour.cs" />
+    <Compile Include="Assets\__Scripts\LevelController.cs" />
+    <Compile Include="Assets\__Scripts\LevelFinished.cs" />
     <Compile Include="Assets\__Scripts\MainController.cs" />
     <Compile Include="Assets\__Scripts\PauseMenu.cs" />
     <Compile Include="Assets\__Scripts\Player.cs" />
     <Compile Include="Assets\__Scripts\PlayerBullet.cs" />
+    <Compile Include="Assets\__Scripts\PowerUp.cs" />
+    <Compile Include="Assets\__Scripts\PowerUpController.cs" />
+    <Compile Include="Assets\__Scripts\Shield.cs" />
     <Compile Include="Assets\__Scripts\Shooting.cs" />
+    <Compile Include="Assets\__Scripts\SpawnController.cs" />
     <Compile Include="Assets\__Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\__Scripts\Utils\HighScoreUtils.cs" />
-    <Compile Include="Assets\__Scripts\Utils\Levels.cs" />
     <Compile Include="Assets\__Scripts\Utils\LevelSettings.cs" />
+    <Compile Include="Assets\__Scripts\Utils\Score.cs" />
     <Compile Include="Assets\__Scripts\Utils\ShuffledStack.cs" />
     <Compile Include="Assets\__Scripts\Waypoint.cs" />
     <Compile Include="Assets\__Scripts\WaypointFollower.cs" />
@@ -116,7 +125,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
-    <None Include="Assets\__Sprites\NewUnlitShader.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
@@ -134,6 +142,7 @@
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\VisualFX\NewSurfaceShader.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />

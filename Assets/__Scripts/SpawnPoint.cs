@@ -11,13 +11,13 @@ public class SpawnPoint : MonoBehaviour
 {
     #region Serialized fields
     [SerializeField]
-    private float spawnDelay = 0.25f;
+    private float spawnDelay;
 
     [SerializeField]
-    private float spawnRate = 0.3f;
+    private float spawnRate;
 
     [SerializeField]
-    private float enemyStartSpeed = 2f;
+    private float enemyStartSpeed;
 
     [SerializeField]
     private Enemy enemyPrefab;
@@ -28,19 +28,20 @@ public class SpawnPoint : MonoBehaviour
     #endregion
 
     #region private members
-    private String level;
+    private LevelSettings settings;
     private Stack<SpawnPoint> spawnStack;
     private IList<SpawnPoint> spawnPoints;
     private GameObject enemyParent;
     private WaypointFollower follower;
-
+    
     #endregion
 
     void Start()
     {
-        level = gameObject.scene.name;
+        settings = GameObject.Find("LevelSettings").GetComponent<LevelSettings>();
         spawnPoints = GameObject.Find("Spawners").GetComponentsInChildren<SpawnPoint>();
         
+
         enemyParent = GameObject.Find("EnemyParent");
         if (!enemyParent)
         {
@@ -75,7 +76,7 @@ public class SpawnPoint : MonoBehaviour
             follower.AddPointToFollow(point.position);
         }
 
-        follower.Speed = Levels.Level[level].EnemySpeed;
+        follower.Speed = enemyStartSpeed;
     }
 
     private void ShuffleWaypoints()
@@ -86,4 +87,10 @@ public class SpawnPoint : MonoBehaviour
 
         waypoints = temp;
     }   
+
+    public void SpawnPowerUp(PowerUp powerUp)
+    {
+        var pUp = Instantiate(powerUp);
+        pUp.transform.position = spawnStack.Peek().transform.position;
+    }
 }
