@@ -132,11 +132,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 6158433103436685531, guid: 09823c40409050144becc74726e47b67,
-        type: 3}
-      propertyPath: m_Depth
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 6158433103436685532, guid: 09823c40409050144becc74726e47b67,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -192,14 +187,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6158433103436685531, guid: 09823c40409050144becc74726e47b67,
+        type: 3}
+      propertyPath: m_Depth
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09823c40409050144becc74726e47b67, type: 3}
---- !u!1 &39770743 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6158433103436685529, guid: 09823c40409050144becc74726e47b67,
-    type: 3}
-  m_PrefabInstance: {fileID: 39770742}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &45479890 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 929408094743105464, guid: 1a26d2a9e7bb658469c177fb520961be,
@@ -287,7 +281,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 201183855}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 235418056}
+        m_MethodName: LoadLevel
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Level 2
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &201183855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,12 +423,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 39770743}
-        m_MethodName: 
+      - m_Target: {fileID: 235418056}
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -618,7 +623,7 @@ GameObject:
   - component: {fileID: 299869642}
   - component: {fileID: 299869641}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -641,7 +646,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -357.00003}
+  m_AnchoredPosition: {x: 0, y: -348}
   m_SizeDelta: {x: 663.41547, y: 150.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &299869641
@@ -1168,7 +1173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &649616697
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1857,7 +1862,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030517578, y: 114.00003}
+  m_AnchoredPosition: {x: -0.000030517578, y: 123}
   m_SizeDelta: {x: 663.41547, y: 150.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &877732111
@@ -1902,7 +1907,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 877732112}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 235418056}
+        m_MethodName: LoadLevel
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Level 3
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &877732112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2229,7 +2245,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044599944}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -2647,7 +2663,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030517578, y: 419}
+  m_AnchoredPosition: {x: -0.000030517578, y: 424}
   m_SizeDelta: {x: 663.41547, y: 150.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1311734902
@@ -2788,7 +2804,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -206.00006}
+  m_AnchoredPosition: {x: 0, y: -178}
   m_SizeDelta: {x: 663.41547, y: 150.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1375760554
@@ -2833,7 +2849,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1375760555}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 235418056}
+        m_MethodName: LoadLevel
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Level 5
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1375760555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2903,7 +2930,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1531640690
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3068,7 +3095,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561490856}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -3240,7 +3267,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030517578, y: -47.99994}
+  m_AnchoredPosition: {x: -0.000030517578, y: -27}
   m_SizeDelta: {x: 663.41547, y: 150.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1785765263
@@ -3285,7 +3312,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1785765264}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 235418056}
+        m_MethodName: LoadLevel
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Level 4
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1785765264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3534,7 +3572,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1958731367}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -3917,7 +3955,7 @@ PrefabInstance:
     - target: {fileID: 2002728659993753443, guid: db5c9b6d940866241a42baacf6a88a9e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -267.55078
+      value: -267.55
       objectReference: {fileID: 0}
     - target: {fileID: 1076890483265941508, guid: db5c9b6d940866241a42baacf6a88a9e,
         type: 3}
@@ -3932,12 +3970,12 @@ PrefabInstance:
     - target: {fileID: 1076890483265941508, guid: db5c9b6d940866241a42baacf6a88a9e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 391.70703
+      value: 391.70773
       objectReference: {fileID: 0}
     - target: {fileID: 1076890483265941508, guid: db5c9b6d940866241a42baacf6a88a9e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -356.6504
+      value: -356.64996
       objectReference: {fileID: 0}
     - target: {fileID: 2359553312587433908, guid: db5c9b6d940866241a42baacf6a88a9e,
         type: 3}
@@ -3997,7 +4035,7 @@ PrefabInstance:
     - target: {fileID: 7269033023229013555, guid: db5c9b6d940866241a42baacf6a88a9e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -623.9492
+      value: -623.9499
       objectReference: {fileID: 0}
     - target: {fileID: 6571443206259646601, guid: db5c9b6d940866241a42baacf6a88a9e,
         type: 3}
@@ -4017,7 +4055,7 @@ PrefabInstance:
     - target: {fileID: 6571443206259646601, guid: db5c9b6d940866241a42baacf6a88a9e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -713.0508
+      value: -713.04987
       objectReference: {fileID: 0}
     - target: {fileID: 7581966716969017885, guid: db5c9b6d940866241a42baacf6a88a9e,
         type: 3}
@@ -6433,7 +6471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b97bd9587fc32e8419c99ee1cc60de2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelInProgress: 0
 --- !u!1001 &929408094704564330
 PrefabInstance:
   m_ObjectHideFlags: 0

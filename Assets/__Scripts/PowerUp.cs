@@ -1,7 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// PowerUp type definition.
+/// Represent collectable power up item.
+/// Defines collision with a player actions and when collected publish event.
+/// </summary>
 public class PowerUp : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)

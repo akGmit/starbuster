@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 /// <summary>
-/// An instance of this class will hold various level entities settings.
+/// A game object script which will hold for easy access a specific level settings.
 /// </summary>
 public class LevelSettings : MonoBehaviour
 {

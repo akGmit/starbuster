@@ -46,4 +46,5 @@ MonoBehaviour:
   powerUps:
   - {fileID: 5720908758171739334, guid: ea114a63d0e67024998910b68a8c499f, type: 3}
   - {fileID: 3302368291923700214, guid: 35f2982a5deb31b4394fc9a60e5a00c9, type: 3}
-  LevelInProgress: 0
+  firingRate: {fileID: 6512881558126887571, guid: 862e89fd3ed4dba43b143c1a7146dd98,
+    type: 3}
