@@ -42,7 +42,7 @@ Material:
     - _PerspectiveFilter: 0.875
     - _ScaleRatioA: 0.72072077
     - _ScaleRatioB: 1
-    - _ScaleRatioC: 1.0104564
+    - _ScaleRatioC: 1.2176001
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -55,9 +55,9 @@ Material:
     - _Strength: 0.24
     - _TextureHeight: 512
     - _TextureWidth: 512
-    - _UnderlayDilate: 0.039
-    - _UnderlayOffsetX: -1
-    - _UnderlayOffsetY: 0.747
+    - _UnderlayDilate: -0.27
+    - _UnderlayOffsetX: -0.94
+    - _UnderlayOffsetY: -0.41
     - _UnderlaySoftness: 0.166
     - _UseUIAlphaClip: 0
     - _VertexOffsetX: 0
@@ -67,8 +67,8 @@ Material:
     m_Colors:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
     - _Color: {r: 1, g: 0.08018869, b: 0.08018869, a: 1}
-    - _FaceColor: {r: 0.59460664, g: 0.6020467, b: 0.9622642, a: 1}
-    - _OutlineColor: {r: 0.9837489, g: 1, b: 0, a: 1}
+    - _FaceColor: {r: 0.45020467, g: 0.56004983, b: 0.6320754, a: 1}
+    - _OutlineColor: {r: 0.46925062, g: 0.7923768, b: 0.8962264, a: 1}
     - _UnderlayColor: {r: 0.082013145, g: 0.5253165, b: 0.9150943, a: 1}
 --- !u!114 &11400000
 MonoBehaviour:

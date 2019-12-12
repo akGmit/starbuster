@@ -21,7 +21,7 @@ public class Boss : Enemy
     {
         settings = GameObject.Find("LevelSettings").GetComponent<LevelSettings>();
         rb = gameObject.GetComponent<Rigidbody2D>();
-        strength = settings.EnemyStrength * 7;
+        strength = settings.EnemyStrength * 15;
         SetMovementVector();     
     }
 

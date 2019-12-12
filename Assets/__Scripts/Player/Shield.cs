@@ -9,12 +9,18 @@ using UnityEngine;
 /// </summary>
 public class Shield : MonoBehaviour
 {
-    public bool Active = false;
     private float timeActive = 5f;
+    private Player player;
 
     void Start()
     {
+        player = GameObject.Find("Player").GetComponent<Player>();
         Destroy(gameObject, timeActive);
+    }
+
+    private void Update()
+    {
+        transform.position = player.transform.position;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

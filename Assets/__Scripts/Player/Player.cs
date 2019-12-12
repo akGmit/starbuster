@@ -43,10 +43,7 @@ public class Player : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        if(shield)
-        {
-            shield.transform.position = transform.position;
-        }
+        
         var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * playerSpeed;
         var newXPos = transform.position.x + deltaX;
         transform.position = new Vector2(newXPos, transform.position.y);
@@ -70,7 +67,9 @@ public class Player : MonoBehaviour
         else if (collision && enemy)
         {
             CollisionOutcome(settings.EnemyCollisionDamage, enemy.gameObject);
-        } else if (collision && powerup){
+        }
+        else if (collision && powerup)
+        {
             if (powerup.CompareTag("CollectableFiringRate"))
             {
                 var shoot = gameObject.GetComponent<Shooting>();
@@ -78,8 +77,6 @@ public class Player : MonoBehaviour
                 Destroy(powerup);
             }
         }
-
-
     }
 
     //Helper method to determine collision outcome
@@ -111,7 +108,7 @@ public class Player : MonoBehaviour
     /// </summary>
     public void ActivateShield()
     {
-        shield = Instantiate(shieldPrefab);
+        Instantiate(shieldPrefab);
     }
 
    

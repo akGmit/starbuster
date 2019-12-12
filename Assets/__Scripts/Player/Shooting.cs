@@ -22,8 +22,9 @@ public class Shooting : MonoBehaviour
     private PlayerBullet beamPrefab;
     #endregion
 
+    private PlayerBullet bul;
     private PlayerBullet bullet;
-    private PlayerBullet beam;
+    private bool beam = false;
 
     // InvokeRepeating Shoot() method which shoots player bullets
     void Start()
@@ -33,15 +34,6 @@ public class Shooting : MonoBehaviour
 
     private void Shoot()
     {
-        Bullet();
-        bullet.transform.position = new Vector2(transform.position.x, transform.position.y + 0.8f);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>(); 
-        rb.velocity = Vector2.up * bulletSpeed;
-    }
-
-    // If beam is activated, bullet instantiated to beam prefab
-    private void Bullet()
-    {
         if (beam)
         {
             bullet = Instantiate(beamPrefab);
@@ -50,15 +42,25 @@ public class Shooting : MonoBehaviour
         {
             bullet = Instantiate(bulletPrefab);
         }
+        bullet.transform.position = transform.position;
+        var b = transform.position.y + 0.8f;
+        bullet.transform.position = new Vector2(transform.position.x, b);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.velocity = Vector2.up * bulletSpeed;
     }
 
-    // Activate beam
     public void ActivateBeam()
     {
-        beam = Instantiate(beamPrefab);
+        beam = true;
+        Invoke("DeActivateBeam", 4f);
     }
 
-    public void IncreaseFiringRate()
+    public void DeActivateBeam()
+    {
+        beam = false;
+    }
+
+        public void IncreaseFiringRate()
     {
         firingRate = firingRate * 0.5f;
         bulletSpeed *= 2;

@@ -6,27 +6,11 @@ public class Beam : MonoBehaviour
 {
     private float timeActive;
     private float timeActivated;
-    private LevelSettings settings;
     private int hitCount = 3;
     
     void Start()
     {
-        settings = GameObject.Find("LevelSettings").GetComponent<LevelSettings>();
-        timeActive = 7f;
-        timeActivated = Time.time;
-    }
-
-    void Update()
-    {
-        Timer();
-    }
-
-    private void Timer()
-    {
-        if (Time.time - timeActivated > timeActive)
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject, 4f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

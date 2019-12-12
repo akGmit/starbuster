@@ -12,9 +12,6 @@ public class LevelController : MonoBehaviour
     #region serialized fields
     [SerializeField]
     private HighScoreUtils highScore;
-
-    [SerializeField]
-    private LevelFinished levelFinishedMenu;
     #endregion  
 
     private Player player;
@@ -79,7 +76,8 @@ public class LevelController : MonoBehaviour
     // Show level finished UI
     private void ShowLevelFinished()
     {
-        levelFinishedMenu.LevelFinishedMenu(player.Score);
+        GameObject.Find("InGameMenu").GetComponent<LevelFinished>().LevelFinishedMenu(player.Score);
+        player.Score = 0;
     }
 
     #region Event handlers
